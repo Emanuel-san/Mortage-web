@@ -2,21 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Mortgages</title>
+    <link th:rel="stylesheet" th:href="@{style.css}" />
 </head>
 <body>
-    <div>Web Application. Passed parameter : th:text="${message}"</div>
+    <div>Web Application. Passed parameter :
+        <span th:text="${message}"></span>
+    </div>
 </body>
 </html>
-
-<!--
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Title</title>
-</head>
-<body>
-<div>Web Application. Passed parameter : th:text="${message}"</div>
-</body>
-</html>
-->

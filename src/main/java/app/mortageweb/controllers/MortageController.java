@@ -8,8 +8,9 @@ import org.springframework.web.servlet.ModelAndView;
 public class MortageController {
 
     @GetMapping("/")
-    public String index(){
-        //ModelAndView
-        return "response";
+    public ModelAndView index(){
+        ModelAndView modelAndView = new ModelAndView("index");
+        modelAndView.addObject("message", "Hello from back end!");
+        return modelAndView;
     }
 }
