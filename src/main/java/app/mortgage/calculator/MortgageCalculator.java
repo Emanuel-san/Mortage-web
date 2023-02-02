@@ -24,15 +24,24 @@ public class MortgageCalculator {
 
         return mortgage.getTotalLoan() * (monthlyInterestRate * monthlyInterest) / (monthlyInterest - 1);
     }
+
+    /**
+     * Round to a given amount of decimals.
+     * @param toRound double that will be rounded
+     * @param decimals amount of decimals the double will be rounded to
+     * @return rounded double
+     */
     public static double round(double toRound, int decimals){
         StringBuilder decimalFormatArgument = new StringBuilder("0.");
         DecimalFormatSymbols formatSymbols = new DecimalFormatSymbols();
         formatSymbols.setDecimalSeparator('.');
+        DecimalFormat df = new DecimalFormat(decimalFormatArgument.toString());
+        df.setDecimalFormatSymbols(formatSymbols);
+
         for(int i = 0; i < decimals; i++){
             decimalFormatArgument.append('0');
         }
-        DecimalFormat df = new DecimalFormat(decimalFormatArgument.toString());
-        df.setDecimalFormatSymbols(formatSymbols);
+
         return Double.parseDouble(df.format(toRound));
     }
 }

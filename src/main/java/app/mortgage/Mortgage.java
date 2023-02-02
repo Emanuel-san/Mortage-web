@@ -2,11 +2,6 @@ package app.mortgage;
 
 import app.mortgage.calculator.MortgageCalculator;
 
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.text.NumberFormat;
-import java.util.Locale;
-
 public class Mortgage{
     private static int mortageCounter = 0;
     private final int id;
