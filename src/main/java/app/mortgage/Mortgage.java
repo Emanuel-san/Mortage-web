@@ -28,7 +28,6 @@ public class Mortgage{
         this.totalLoan = totalLoan;
         this.loanPeriod = loanPeriod;
         monthlyPayment = MortgageCalculator.round(MortgageCalculator.monthlyPayment(this),2);
-        System.out.println(monthlyPayment);
         this.id = ++mortageCounter;
     }
     public void printCustomerMonthlyPayment(){

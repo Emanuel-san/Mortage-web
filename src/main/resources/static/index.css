@@ -1,0 +1,51 @@
+.webb-app-container{
+    margin-left: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+}
+#table-header-container
+{
+    font-family: "Roboto Light", sans-serif;
+    width: 800px;
+    margin: 0 auto;
+}
+.webb-app-header
+{
+    background-color: mediumblue;
+    color: white;
+    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    text-align: center;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.mortgages
+{
+    width: 100%;
+    border-collapse: collapse;
+}
+.mortgages td, .mortgages th
+{
+    border: 1px solid black;
+    padding-left: 5px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+}
+#mortgages-table-header
+{
+    background-color: deepskyblue;
+}
+.customer-row
+{
+    background-color: #e5e5e5;
+}
+#customer-name
+{
+    text-align: left;
+}
