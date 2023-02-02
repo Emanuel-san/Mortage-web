@@ -2,13 +2,19 @@ package app.mortgage;
 
 import app.mortgage.calculator.MortgageCalculator;
 
-public class Mortgage {
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
+import java.util.Locale;
+
+public class Mortgage{
     private static int mortageCounter = 0;
     private final int id;
     private final String customerName;
     private final double annualInterestRate;
     private final double totalLoan;
     private final int loanPeriod;
+    private final double monthlyPayment;
 
     public Mortgage(String customerName, double totalLoan, double annualInterestRate, int loanPeriod) throws IllegalArgumentException{
         if(totalLoan <= 0){
@@ -21,10 +27,16 @@ public class Mortgage {
         this.annualInterestRate = annualInterestRate;
         this.totalLoan = totalLoan;
         this.loanPeriod = loanPeriod;
+        monthlyPayment = MortgageCalculator.round(MortgageCalculator.monthlyPayment(this),2);
+        System.out.println(monthlyPayment);
         this.id = ++mortageCounter;
     }
     public void printCustomerMonthlyPayment(){
         System.out.printf("%s wants to borrow %.2f€ for a period of %d years and pay %.2f€ each month.\n", customerName, totalLoan, loanPeriod, MortgageCalculator.monthlyPayment(this));
+    }
+
+    public String getCustomerName() {
+        return customerName;
     }
 
     public double getAnnualInterestRate() {
@@ -37,6 +49,10 @@ public class Mortgage {
 
     public int getLoanPeriod() {
         return loanPeriod;
+    }
+
+    public double getMonthlyPayment() {
+        return monthlyPayment;
     }
 
     public int getId() {

@@ -6,8 +6,27 @@
     <link th:rel="stylesheet" th:href="@{style.css}" />
 </head>
 <body>
-    <div>Web Application. Passed parameter :
-        <span th:text="${message}"></span>
+    <div class="table-container">
+        <table class="mortgages">
+            <thead>
+                <tr class="mortgages-table-header">
+                    <th>Customer</th>
+                    <th>Total loan</th>
+                    <th>Interest</th>
+                    <th>Years</th>
+                    <th>Monthly Payment</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="customer-row" th:each="mortgage: ${mortgages}">
+                    <td th:text="${mortgage.getCustomerName()}"></td>
+                    <td th:text="${mortgage.getTotalLoan()}"></td>
+                    <td th:text="${mortgage.getAnnualInterestRate()}"></td>
+                    <td th:text="${mortgage.getLoanPeriod()}"></td>
+                    <td th:text="${mortgage.getMonthlyPayment()}"></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </body>
 </html>

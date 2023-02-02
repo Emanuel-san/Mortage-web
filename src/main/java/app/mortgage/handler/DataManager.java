@@ -5,7 +5,9 @@ import app.mortgage.exceptions.IllegalArrayLengthException;
 
 import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;;
 
 public class DataManager {
     private final HashMap<Integer, Mortgage> mortgages;
@@ -38,8 +40,10 @@ public class DataManager {
     public void printAllMortgages(){
         mortgages.values().forEach(Mortgage::printCustomerMonthlyPayment);
     }
+    public List<Mortgage> getMortgagesAsList(){
+        return new ArrayList<>(mortgages.values());
+    }
     public int mapSize(){
         return mortgages.size();
     }
-
 }

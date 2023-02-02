@@ -2,6 +2,9 @@ package app.mortgage.calculator;
 
 import app.mortgage.Mortgage;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+
 public class MortgageCalculator {
 
     /**
@@ -20,5 +23,16 @@ public class MortgageCalculator {
         }
 
         return mortgage.getTotalLoan() * (monthlyInterestRate * monthlyInterest) / (monthlyInterest - 1);
+    }
+    public static double round(double toRound, int decimals){
+        StringBuilder decimalFormatArgument = new StringBuilder("0.");
+        DecimalFormatSymbols formatSymbols = new DecimalFormatSymbols();
+        formatSymbols.setDecimalSeparator('.');
+        for(int i = 0; i < decimals; i++){
+            decimalFormatArgument.append('0');
+        }
+        DecimalFormat df = new DecimalFormat(decimalFormatArgument.toString());
+        df.setDecimalFormatSymbols(formatSymbols);
+        return Double.parseDouble(df.format(toRound));
     }
 }
