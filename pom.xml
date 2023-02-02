@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>app</groupId>
-	<artifactId>mortage-web</artifactId>
+	<artifactId>mortgage-web</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>mortage-web</name>
-	<description>mortage calculator</description>
+	<name>mortgage-web</name>
+	<description>mortgage calculator</description>
 	<properties>
 		<java.version>19</java.version>
 	</properties>

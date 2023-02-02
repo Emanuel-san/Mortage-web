@@ -1,10 +1,10 @@
-package app.mortageweb;
+package app.mortgageweb;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MortageWebApplicationTests {
+class MortgageWebApplicationTests {
 
 	@Test
 	void contextLoads() {

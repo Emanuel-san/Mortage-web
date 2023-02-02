@@ -1,4 +1,4 @@
-package app.mortage.exceptions;
+package app.mortgage.exceptions;
 
 public class IllegalArrayLengthException extends Exception{
 

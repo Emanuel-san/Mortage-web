@@ -1,7 +1,7 @@
-package app.mortage.handler;
+package app.mortgage.handler;
 
-import app.mortage.exceptions.IllegalArrayLengthException;
-import app.mortage.exceptions.ParsingArrayDataException;
+import app.mortgage.exceptions.IllegalArrayLengthException;
+import app.mortgage.exceptions.ParsingArrayDataException;
 import org.apache.commons.lang3.math.NumberUtils;
 
 import java.io.BufferedReader;
@@ -12,10 +12,10 @@ import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.util.Arrays;
 
-public class MortageFileHandler {
+public class MortgageFileHandler {
     DataManager manager;
 
-    public MortageFileHandler(DataManager manager){
+    public MortgageFileHandler(DataManager manager){
         this.manager = manager;
     }
 
@@ -48,7 +48,7 @@ public class MortageFileHandler {
                         }
                     }
                     try {
-                        manager.addMortage(parts);
+                        manager.addMortgage(parts);
                     } catch (IllegalArrayLengthException | NumberFormatException e) {
                         System.err.println(e.getMessage());
                     }

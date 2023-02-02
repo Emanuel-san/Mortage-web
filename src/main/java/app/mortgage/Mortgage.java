@@ -1,8 +1,8 @@
-package app.mortage;
+package app.mortgage;
 
-import app.mortage.calculator.MortageCalculator;
+import app.mortgage.calculator.MortgageCalculator;
 
-public class Mortage {
+public class Mortgage {
     private static int mortageCounter = 0;
     private final int id;
     private final String customerName;
@@ -10,7 +10,7 @@ public class Mortage {
     private final double totalLoan;
     private final int loanPeriod;
 
-    public Mortage(String customerName, double totalLoan, double annualInterestRate, int loanPeriod) throws IllegalArgumentException{
+    public Mortgage(String customerName, double totalLoan, double annualInterestRate, int loanPeriod) throws IllegalArgumentException{
         if(totalLoan <= 0){
             throw new IllegalArgumentException("Loan amount can not be 0 or less");
         }
@@ -24,7 +24,7 @@ public class Mortage {
         this.id = ++mortageCounter;
     }
     public void printCustomerMonthlyPayment(){
-        System.out.printf("%s wants to borrow %.2f€ for a period of %d years and pay %.2f€ each month.\n", customerName, totalLoan, loanPeriod, MortageCalculator.monthlyPayment(this));
+        System.out.printf("%s wants to borrow %.2f€ for a period of %d years and pay %.2f€ each month.\n", customerName, totalLoan, loanPeriod, MortgageCalculator.monthlyPayment(this));
     }
 
     public double getAnnualInterestRate() {
