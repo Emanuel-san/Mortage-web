@@ -4,6 +4,8 @@ A webb application built on Spring Boot with some plain java logic in the back-e
 calculates the monthly payment on a mortgage.</br>
 Available Dockerfile to run it on standalone docker container.
 
+Preview of the app [here](ec2-34-237-0-254.compute-1.amazonaws.com:8080/) running on AWS EC2 instance.
+
 ## Running the app
 
 All instructions below assume that you already have cloned the git repository locally.
