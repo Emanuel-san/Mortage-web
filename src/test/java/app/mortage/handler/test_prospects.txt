@@ -1,0 +1,3 @@
+Customer,Total loan,Interest,Years
+Juha,1000,5,2
+Karvinen,4356,1.27,6
