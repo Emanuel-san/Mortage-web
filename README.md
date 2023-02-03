@@ -20,7 +20,7 @@ You can move `mortgage-web-0.0.1-SNAPSHOT.jar` to any location you want but `pro
 
 
 ### Docker instruction
-These instructions assume you have Docker installed to docker installer in a powershell/bash terminal.
+These instructions assume you have Docker installed to run docker commands in a powershell/bash terminal.
 
 Navigate to the mortgage-web project root folder.
 
