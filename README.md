@@ -67,7 +67,7 @@ When creating the EC2 instance, make sure it is on public subnet, else it won't 
 [Connect to your EC2 instance using ssh](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html) and install [Amazon Corretto 18](https://docs.aws.amazon.com/corretto/latest/corretto-18-ug/generic-linux-install.html#rpm-linux-install-instruct).
 
 After installation is complete open a new command prompt and transfer the JAR file and *prospects.txt* [using native secure copy (SCP)](https://docs.aws.amazon.com/managedservices/latest/appguide/qs-file-transfer.html) with the following commands(*from project root*).
-`scp .\mortgage-web-0.0.1-SNAPSHOT.jar ec2-user@<your_ec2_instance_ip>:/home/ec2-user`</br>
+</br>`scp .\mortgage-web-0.0.1-SNAPSHOT.jar ec2-user@<your_ec2_instance_ip>:/home/ec2-user`</br></br>
 `scp .\prospects.txt ec2-user@<your_ec2_instance_ip>:/home/ec2-user`
 
 Switch back to your command prompt with the ssh connection to the EC2 instance and run the JAR file `java -jar target/mortgage-web-0.0.1-SNAPSHOT.jar`
@@ -77,7 +77,7 @@ The Spring Boot app will start and you can now test for a response on your local
 Create an AMI image of your instance, then you will always have an instance with java jdk installed when starting a new EC2 instance using that image.
 
 Upload a fresh JAR file and `prospects.txt` to you s3 bucket, replace `<your_s3_bucket_name>` with your own bucket name that you created.</br>
-`aws s3 cp target/mortgage-web-0.0.1-SNAPSHOT.jar s3://<your_s3_bucket_name>/mortgage-web-0.0.1-SNAPSHOT.jar`</br>
+`aws s3 cp target/mortgage-web-0.0.1-SNAPSHOT.jar s3://<your_s3_bucket_name>/mortgage-web-0.0.1-SNAPSHOT.jar`</br></br>
 `aws s3 cp prospects.txt s3://mortgage-assignment-bucket/prospects.txt`</br>
 
 Instead of creating a new shell script use `startup.sh` included with the project and modify the bucket name `mortgage-assignment-bucket`
@@ -99,6 +99,8 @@ bucket on start up using the shell script
 `--associate-public-ip-address`
 
 See [AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html) for documentation on each option.
+
+You know have an EC2 instance reachable on port 8080 running your latest version and data.
 
 
 ### Modifications to input data file *prospects.txt* (IDE, JAR, DOCKER)
