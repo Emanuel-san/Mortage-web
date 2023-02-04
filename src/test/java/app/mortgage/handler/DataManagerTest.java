@@ -1,5 +1,6 @@
 package app.mortgage.handler;
 
+import app.mortgage.Mortgage;
 import app.mortgage.exceptions.IllegalArrayLengthException;
 import org.junit.jupiter.api.Test;
 
@@ -30,15 +31,14 @@ class DataManagerTest {
         Path path = Path.of(System.getProperty("user.dir") + "/src/test/java/app/mortgage/handler/test_prospects.txt");
         testManager.initDataFetch(path);
 
-        //This is also an indirect test of ID incrementation in Mortage.
         assertEquals(2, testManager.mapSize());
     }
 
     @Test
     void testFaultyInData(){
-        String[] faulty1 = {"Juha", "1000.2", "1.24", "a"};
-        String[] faulty2 = {"Juha", "1000.2", "1.24", "2", "2"};
-        String[] faulty3 = {"5", "Juha", "1000.2", "1.24", "2", "2"};
+        String[] faulty1 = {"Juha", "11000.2", "1.4", "a"};
+        String[] faulty2 = {"Juha", "100.2", "2.24", "2", "2"};
+        String[] faulty3 = {"5", "Juha", "1000.2", "5", "2", "2"};
 
         DataManager testManager = new DataManager();
         assertThrows(NumberFormatException.class, () -> testManager.addMortgage(faulty1));

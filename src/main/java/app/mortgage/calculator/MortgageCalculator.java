@@ -35,13 +35,19 @@ public class MortgageCalculator {
         StringBuilder decimalFormatArgument = new StringBuilder("0.");
         DecimalFormatSymbols formatSymbols = new DecimalFormatSymbols();
         formatSymbols.setDecimalSeparator('.');
-        DecimalFormat df = new DecimalFormat(decimalFormatArgument.toString());
-        df.setDecimalFormatSymbols(formatSymbols);
 
         for(int i = 0; i < decimals; i++){
             decimalFormatArgument.append('0');
         }
 
+        DecimalFormat df = new DecimalFormat(decimalFormatArgument.toString());
+        df.setDecimalFormatSymbols(formatSymbols);
+
+        //Round negative numbers
+        if(toRound < 0){
+            toRound *= (-1);
+            return Double.parseDouble(df.format(toRound)) * (-1);
+        }
         return Double.parseDouble(df.format(toRound));
     }
 }

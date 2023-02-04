@@ -6,6 +6,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class MortgageTest {
+
+    @Test
+    void mortageIdIncrementing(){
+        Mortgage m1 = new Mortgage("Juha", 11000.2, 1.4, 3);
+        Mortgage m2 = new Mortgage("Jens", 100.2, 2.24, 4);
+        Mortgage m3 = new Mortgage("Juha", 1000.2, 5, 2);
+
+        assertEquals(1, m1.getId());
+        assertEquals(2, m2.getId());
+        assertEquals(3, m3.getId());
+
+    }
     @Test
     public void testNegativeTotalLoan() {
         IllegalArgumentException thrown = assertThrows(
