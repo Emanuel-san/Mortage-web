@@ -1,5 +1,7 @@
 package app.mortgage.handler;
 
+import app.mortgage.Mortgage;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.NoSuchFileException;
@@ -9,6 +11,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class MortgageFileHandlerTest {
+
+    @BeforeEach
+    public void clear(){
+        Mortgage.resetCounter();
+    }
 
     @Test
     void testReadFile() {

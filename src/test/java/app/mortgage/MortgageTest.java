@@ -1,5 +1,6 @@
 package app.mortgage;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -7,8 +8,21 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class MortgageTest {
 
+    @BeforeEach
+    void clear(){
+        Mortgage.resetCounter();
+    }
+
     @Test
-    void mortageIdIncrementing(){
+    void resetIdCounterTest(){
+        new Mortgage("Juha", 11000.2, 1.4, 3);
+        new Mortgage("Jens", 100.2, 2.24, 4);
+        Mortgage.resetCounter();
+        Mortgage m3 = new Mortgage("Juha", 1000.2, 5, 2);
+        assertEquals(1, m3.getId());
+    }
+    @Test
+    void mortageIdIncrementingTest(){
         Mortgage m1 = new Mortgage("Juha", 11000.2, 1.4, 3);
         Mortgage m2 = new Mortgage("Jens", 100.2, 2.24, 4);
         Mortgage m3 = new Mortgage("Juha", 1000.2, 5, 2);

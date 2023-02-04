@@ -3,6 +3,7 @@ package app.mortgage;
 import app.mortgage.calculator.MortgageCalculator;
 
 public class Mortgage{
+    private static final int INITIAL_COUNT = 0;
     private static int mortageCounter = 0;
     private final int id;
     private final String customerName;
@@ -27,6 +28,9 @@ public class Mortgage{
     }
     public void printCustomerMonthlyPayment(){
         System.out.printf("%s wants to borrow %.2f€ for a period of %d years and pay %.2f€ each month.\n", customerName, totalLoan, loanPeriod, MortgageCalculator.monthlyPayment(this));
+    }
+    public static void resetCounter(){
+        mortageCounter = INITIAL_COUNT;
     }
 
     public String getCustomerName() {

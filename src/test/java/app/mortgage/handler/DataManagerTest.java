@@ -2,6 +2,7 @@ package app.mortgage.handler;
 
 import app.mortgage.Mortgage;
 import app.mortgage.exceptions.IllegalArrayLengthException;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.nio.file.Path;
@@ -11,6 +12,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class DataManagerTest {
 
+    @BeforeEach
+    public void clear(){
+        Mortgage.resetCounter();
+    }
     @Test
     void testAddMortage() {
         String[] testData = {"Juha", "1000.2", "1.24", "2"};
