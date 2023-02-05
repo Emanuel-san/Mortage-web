@@ -79,7 +79,7 @@ Instead of creating a new shell script use `startup.sh` included with the projec
 to your own.
 
 You now have a complete pipeline where you can modify the app or input data file and upload them to your s3 bucket and start a new EC2 instance that will download the latest version from your
-bucket on start up using the shell script
+bucket on start up using the shell script.
 
 [Start an EC2 instance](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-ec2-instances.html#launching-instances) from your image using the startup shell script.
 

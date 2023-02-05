@@ -29,7 +29,7 @@ class MortgageFileHandlerTest {
             System.out.println("Could not find test data file: " + e.getMessage());
         }
 
-        // If NoSuchFileException is thrown then this test will fail.
+        // If NoSuchFileException is thrown then this assert will fail.
         assertEquals(2, testManager.mapSize());
 
         Path faultyTestPath = Path.of(System.getProperty("user.dir") + "/src/test/java/app/mortgage/handler/test_prospectssss.txt");

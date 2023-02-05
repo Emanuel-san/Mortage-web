@@ -20,7 +20,9 @@ public class MortgageFileHandler {
     }
 
     public void readFile(Path path) throws NoSuchFileException {
+        //skip first line in input file
         boolean firstLineRead = false;
+
         try (BufferedReader br = Files.newBufferedReader(path, Charset.defaultCharset())) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -31,13 +33,17 @@ public class MortgageFileHandler {
                  * \\s matches any white space character
                  * \\, matches any comma
                  * \\. matches any dot
+                 * \\- matches any line
                  * The ^ inside the square brackets means "not"
                  *
                  * Anything that doesn't meet the above conditions is removed.
                  **/
-                line = line.replaceAll("[^\\p{L}\\p{N}\\s\\,\\.]", "");
+                line = line.replaceAll("[^\\p{L}\\p{N}\\s\\,\\.\\-]", "");
                 String[] parts = line.split(",");
 
+                /*If the split generated an array length shorter than 4 then we just skip it because we know its
+                * not parsable. Should be logged!!
+                */
                 if (firstLineRead && parts.length >= 4) {
                     if (parts.length > 4) {
                         try {
@@ -66,6 +72,13 @@ public class MortgageFileHandler {
         }
     }
 
+    /**
+     * Method will try to parse any array length that is longer then 5. The method is naive in the way that it assumes
+     * that the name is put in wrong and adds every string that is not parsable to a number from index 0 of the input array.
+     * @param array
+     * @return
+     * @throws ParsingArrayDataException
+     */
     private String[] parseArray(String[] array) throws ParsingArrayDataException {
         StringBuilder builder = new StringBuilder();
         String[] parsedArray = new String[4];
@@ -84,6 +97,7 @@ public class MortgageFileHandler {
 
         parsedArray[0] = builder.toString().trim();
         for(int i = currentIndex; i < array.length; i++){
+            //Array was not parsable if we try and to the array past a length of 4. Avoid out of bounds and throw a parse error instead.
             if(parsedArrayIndex > 3){
                 throw new ParsingArrayDataException("Failed parsing with given array data: " + Arrays.toString(array));
             }

@@ -37,6 +37,8 @@ public class DataManager {
             System.out.println("File not found: " + e.getMessage());
         }
     }
+
+
     public void printAllMortgages(){
         mortgages.values().forEach(Mortgage::printCustomerMonthlyPayment);
     }
