@@ -9,13 +9,8 @@ Preview of the app [here](http://ec2-34-237-0-254.compute-1.amazonaws.com:8080) 
 ## Running the app
 
 ### Before you start
-After cloning the repository you will have to do an initial packaging except if you run it in your IDE. </br>You can either do it by using maven CLI command `mvn package` if you have it installed
+After cloning the repository you will have to do an initial packaging except if you're running it in your IDE. </br>You can either do it by using maven CLI command `mvn package` if you have it installed
 or your IDE maven packing tool.
-
-
-### IDE
-Start your favourite IDE and run `MortgageWebApplication.java`.
-
 
 ### JAR
 
@@ -53,7 +48,7 @@ since the container is publishing itself on your host machines port 8080 and wil
 If your running Docker Desktop then this can be done under *Containers*, else do `docker stop <container_id_or_name>`.
 
 ### Invoke the app on an AWS EC2 container
-Prerequisite to following the instructions below:
+Prerequisite to the following instructions below:
 * [AWS CLI installed](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 * [Have EC2 SSH key pair setup](https://docs.aws.amazon.com/ground-station/latest/ug/create-ec2-ssh-key-pair.html)
 * [Have access key to start an EC2 instance](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-about)
@@ -62,19 +57,19 @@ Prerequisite to following the instructions below:
 * [Create an S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-bucket.html)
 * [Creating an EC2 instance with Amazon Linux](https://docs.aws.amazon.com/efs/latest/ug/gs-step-one-create-ec2-resources.html)
 
-When creating the EC2 instance, make sure it is on public subnet, else it won't be accessible from the outside. Enable Auto-assign public IP and choose your security group.
+When creating the EC2 instance, make sure it is on a public subnet, else it won't be accessible from the outside. Enable Auto-assign public IP and choose your security group.
 
 [Connect to your EC2 instance using ssh](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html) and install [Amazon Corretto 18](https://docs.aws.amazon.com/corretto/latest/corretto-18-ug/generic-linux-install.html#rpm-linux-install-instruct).
 
-After installation is complete open a new command prompt and transfer the JAR file and *prospects.txt* [using native secure copy (SCP)](https://docs.aws.amazon.com/managedservices/latest/appguide/qs-file-transfer.html) with the following commands(*from project root*).
+After installation is complete open a new command prompt and transfer the JAR file and *prospects.txt* [using native secure copy (SCP)](https://docs.aws.amazon.com/managedservices/latest/appguide/qs-file-transfer.html) with the following commands(*from project root folder*).
 </br>`scp .\mortgage-web-0.0.1-SNAPSHOT.jar ec2-user@<your_ec2_instance_ip>:/home/ec2-user`</br></br>
 `scp .\prospects.txt ec2-user@<your_ec2_instance_ip>:/home/ec2-user`
 
-Switch back to your command prompt with the ssh connection to the EC2 instance and run the JAR file `java -jar target/mortgage-web-0.0.1-SNAPSHOT.jar`
+Switch back to the command prompt with the ssh connection to your EC2 instance and run the JAR file `java -jar target/mortgage-web-0.0.1-SNAPSHOT.jar`
 
-The Spring Boot app will start and you can now test for a response on your local machine with `curl <you_ec2_instance_ip>:8080` or use your browser to navigate to the ec2 instance and see the mortgages table with data showing.
+The Spring Boot app will start and you can now test for a response on your local machine with `curl <you_ec2_instance_ip>:8080` or use your browser to navigate to the ec2 instance and see the app front-end.
 
-Create an AMI image of your instance, then you will always have an instance with java jdk installed when starting a new EC2 instance using that image.
+[Create an AMI image](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-ami.html) of your instance, then you'll always have an instance with the java jdk installed when starting a new EC2 instance using that image.
 
 Upload a fresh JAR file and `prospects.txt` to you s3 bucket, replace `<your_s3_bucket_name>` with your own bucket name that you created.</br>
 `aws s3 cp target/mortgage-web-0.0.1-SNAPSHOT.jar s3://<your_s3_bucket_name>/mortgage-web-0.0.1-SNAPSHOT.jar`</br></br>
@@ -100,7 +95,7 @@ bucket on start up using the shell script
 
 See [AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html) for documentation on each option.
 
-You know have an EC2 instance reachable on port 8080 running your latest version and data.
+You now have an EC2 instance reachable on port 8080 running your latest version and data.
 
 
 ### Modifications to input data file *prospects.txt* (IDE, JAR, DOCKER)
